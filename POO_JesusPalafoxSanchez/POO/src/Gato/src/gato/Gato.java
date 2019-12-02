@@ -1,8 +1,6 @@
 /*
-Juego del Gato 
-Jose de Jesus Zapata Sanchez
-POO
-2CM1
+JesusPalafoxSanchez
+TAREA
  */
 package gato;
 
@@ -12,9 +10,9 @@ import java.io.InputStreamReader;
 
 
 public class Gato {
-    
+
     public static char[][] gato = new char[3][3];
-    
+
     public static void imprimirPosiciones(){
         int pos = 1;
         System.out.println("Selecciona una posición en el tablero: ");
@@ -24,14 +22,14 @@ public class Gato {
                 if (gato1[j] == 'X' || gato1[j] == 'O') {
                     System.out.print(" " + gato1[j]);
                 } else {
-                    System.out.print( " " + pos);                    
+                    System.out.print( " " + pos);
                 }
                 pos++;
             }
             System.out.println();
-        }  
+        }
     }
-    
+
     public static boolean casillaNoOcupada(int posicion){
         switch (posicion){
             case 1: return gato[0][0]!=' ';
@@ -46,11 +44,11 @@ public class Gato {
             default: return false;
         }
     }
-    
+
     public static void registrarJugada(char caracter) throws IOException{
         boolean salir = false;
         String entrada;
-        BufferedReader bufer = new BufferedReader(new InputStreamReader(System.in));    
+        BufferedReader bufer = new BufferedReader(new InputStreamReader(System.in));
         int posicion;
         do{
             imprimirPosiciones();
@@ -68,7 +66,7 @@ public class Gato {
                     case 4: gato[1][0] = caracter;
                             break;
                     case 5: gato[1][1] = caracter;
-                            break;         
+                            break;
                     case 6: gato[1][2] = caracter;
                             break;
                     case 7: gato[2][0] = caracter;
@@ -81,10 +79,10 @@ public class Gato {
               salir = true;
             }
          else
-            System.out.println("Casilla no válida, escriba una posición valida"); 
+            System.out.println("Casilla no válida, escriba una posición valida");
        } while (!salir);
     }
-    
+
     public static void imprimirGato(){
         System.out.println("El gato hasta el momento: ");
         for (char[] gato1 : gato) {
@@ -93,9 +91,9 @@ public class Gato {
             }
             System.out.println();
         }
-            
+
     }
-    
+
     public static boolean ganaPorRenglon(char caracter){
 
         for (char[] gato1 : gato) {
@@ -105,7 +103,7 @@ public class Gato {
         }
         return false;
     }
-    
+
    public static boolean ganaPorColumna(char caracter){
 
         for (int i=0; i<gato.length; i++){
@@ -113,34 +111,34 @@ public class Gato {
                  return true;
          }
         return false;
-    }  
-    
-    public static boolean ganaPorDiagonales(char caracter){    
+    }
+
+    public static boolean ganaPorDiagonales(char caracter){
         // Busca ganador en la columna de izquierda a derecha
         if (gato[0][0] == caracter && gato[1][1]==caracter && gato[2][2] == caracter)
             return true;
         return gato[0][2] == caracter && gato[1][1]==caracter && gato[2][0] == caracter;
-    } 
-   
+    }
+
     public static boolean hayGanador(char caracter){
         if ( ganaPorRenglon(caracter) )
             return true;
         if ( ganaPorColumna(caracter))
             return true;
-        return ganaPorDiagonales(caracter);    
+        return ganaPorDiagonales(caracter);
 }
-   
+
     public static boolean hayEspacio(){
         for (char[] gato1 : gato) {
             for (int j = 0; j<gato.length; j++) {
-                if (gato1[j] == '-') { 
+                if (gato1[j] == '-') {
                     return true;
                 }
             }
         }
         return false;
     }
-    
+
     public static void inicializarTablero(){
         for (char[] gato1 : gato) {
             for (int j = 0; j<gato.length; j++) {
@@ -179,7 +177,7 @@ public class Gato {
                        jugadorActual = 'X';
            }
        } while ( !terminar);
-        
+
     }
-    
+
 }
